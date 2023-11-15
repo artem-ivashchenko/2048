@@ -2,6 +2,8 @@ The "2048 Game" project is a web-based application that replicates the popular 2
 
 Stack: HTML, SCSS, Javascript;
 
+Preview: https://artem-ivashchenko.github.io/2048/
+
 Warning: current game only works on desktop devices, which have arrow buttons!
 
 Instructions:
