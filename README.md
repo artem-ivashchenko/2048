@@ -20,4 +20,4 @@ Rules:
 5. Scoring: Each merge earns points based on the value of the resulting tile. Higher number tiles yield higher scores.
 6. New Tile Generation: After each move, a new tile (either 2 or 4) appears in an empty spot on the grid.
 7. Game Over: The game ends when the grid fills up, and no more valid moves are possible.
-8. Victory: Achieve the 2048 tile to win the game. However, players can continue playing to achieve higher scores even after reaching 2048.
+8. Victory: Achieve the 2048 tile to win the game. 
