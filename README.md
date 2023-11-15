@@ -1,6 +1,9 @@
 The "2048 Game" project is a web-based application that replicates the popular 2048 puzzle game.
 
-Stack: HTML, SCSS, Javascript;
+Stack: 
+- HTML
+- SCSS
+- Javascript
 
 Preview: https://artem-ivashchenko.github.io/2048/
 
