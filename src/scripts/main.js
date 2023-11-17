@@ -7,6 +7,20 @@ const score = document.querySelector('.game-score');
 const gameButton = document.querySelector('.start');
 const cells = document.querySelectorAll('td');
 
+const Arrow = {
+  right: 'ArrowRight',
+  left: 'ArrowLeft',
+  up: 'ArrowUp',
+  down: 'ArrowDown',
+};
+
+const directions = {
+  right: 'right',
+  left: 'left',
+  up: 'up',
+  down: 'down',
+};
+
 let board = [
   [0, 0, 0, 0],
   [0, 0, 0, 0],
@@ -68,25 +82,24 @@ function gameClick(e) {
 };
 
 function start(e) {
-  if (e.key === 'ArrowLeft' || e.key === 'ArrowRight'
-      || e.key === 'ArrowUp' || e.key === 'ArrowDown') {
+  if (Object.values(Arrow).includes(e.key)) {
     gameButton.classList.value = 'button restart';
     gameButton.innerText = 'Restart';
     gameButton.addEventListener('click', gameClick);
   }
 
   switch (e.key) {
-    case 'ArrowLeft':
-      slide('left');
+    case Arrow.left:
+      slide(directions.left);
       break;
-    case 'ArrowRight':
-      slide('right');
+    case Arrow.right:
+      slide(directions.right);
       break;
-    case 'ArrowUp':
-      slide('up');
+    case Arrow.up:
+      slide(directions.up);
       break;
-    case 'ArrowDown':
-      slide('down');
+    case Arrow.down:
+      slide(directions.down);
       break;
     default:
       break;
@@ -194,11 +207,10 @@ function addZeros(row) {
 }
 
 function slide(direction) {
-  if (direction === 'right' || direction === 'left') {
-    slideHorizontally(direction);
-  } else {
-    slideVertically(direction);
-  }
+  direction === directions.right
+  || direction === directions.left
+    ? slideHorizontally(direction)
+    : slideVertically(direction);
 
   if (findNumber(2048)) {
     showMessage('win');
@@ -219,13 +231,13 @@ function slideHorizontally(direction) {
   for (let r = 0; r < boardSize; r++) {
     let row = board[r];
 
-    if (direction === 'right') {
+    if (direction === directions.right) {
       row.reverse();
     }
 
     row = merge(row);
 
-    if (direction === 'right') {
+    if (direction === directions.right) {
       row.reverse();
     }
 
@@ -244,13 +256,13 @@ function slideVertically(direction) {
   for (let c = 0; c < boardSize; c++) {
     let row = [board[0][c], board[1][c], board[2][c], board[3][c]];
 
-    if (direction === 'down') {
+    if (direction === directions.down) {
       row.reverse();
     }
 
     row = merge(row);
 
-    if (direction === 'down') {
+    if (direction === directions.down) {
       row.reverse();
     }
 
