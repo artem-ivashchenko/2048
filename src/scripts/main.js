@@ -7,19 +7,24 @@ const score = document.querySelector('.game-score');
 const gameButton = document.querySelector('.start');
 const cells = document.querySelectorAll('td');
 
-const Arrow = {
+const ARROW = {
   right: 'ArrowRight',
   left: 'ArrowLeft',
   up: 'ArrowUp',
   down: 'ArrowDown',
 };
 
-const directions = {
+const DIRECTIONS = {
   right: 'right',
   left: 'left',
   up: 'up',
   down: 'down',
 };
+
+const CHANCE = 1;
+const CHANCE_MAX_VALUE = 10;
+const REGULAR_TILE_VALUE = 2;
+const RARE_TILE_VALUE = 4;
 
 let board = [
   [0, 0, 0, 0],
@@ -82,24 +87,24 @@ function gameClick(e) {
 };
 
 function start(e) {
-  if (Object.values(Arrow).includes(e.key)) {
+  if (Object.values(ARROW).includes(e.key)) {
     gameButton.classList.value = 'button restart';
     gameButton.innerText = 'Restart';
     gameButton.addEventListener('click', gameClick);
   }
 
   switch (e.key) {
-    case Arrow.left:
-      slide(directions.left);
+    case ARROW.left:
+      slide(DIRECTIONS.left);
       break;
-    case Arrow.right:
-      slide(directions.right);
+    case ARROW.right:
+      slide(DIRECTIONS.right);
       break;
-    case Arrow.up:
-      slide(directions.up);
+    case ARROW.up:
+      slide(DIRECTIONS.up);
       break;
-    case Arrow.down:
-      slide(directions.down);
+    case ARROW.down:
+      slide(DIRECTIONS.down);
       break;
     default:
       break;
@@ -170,9 +175,9 @@ function addNewNumber() {
   while (!found) {
     const r = getRandom(boardSize);
     const c = getRandom(boardSize);
-    let random = getRandom(10);
+    let random = getRandom(CHANCE_MAX_VALUE);
 
-    random = random > 1 ? 2 : 4;
+    random = random > CHANCE ? REGULAR_TILE_VALUE : RARE_TILE_VALUE;
 
     if (board[r][c] === 0) {
       const cell = document.getElementById(r.toString() + '-' + c.toString());
@@ -207,8 +212,8 @@ function addZeros(row) {
 }
 
 function slide(direction) {
-  direction === directions.right
-  || direction === directions.left
+  direction === DIRECTIONS.right
+  || direction === DIRECTIONS.left
     ? slideHorizontally(direction)
     : slideVertically(direction);
 
@@ -231,13 +236,13 @@ function slideHorizontally(direction) {
   for (let r = 0; r < boardSize; r++) {
     let row = board[r];
 
-    if (direction === directions.right) {
+    if (direction === DIRECTIONS.right) {
       row.reverse();
     }
 
     row = merge(row);
 
-    if (direction === directions.right) {
+    if (direction === DIRECTIONS.right) {
       row.reverse();
     }
 
@@ -256,13 +261,13 @@ function slideVertically(direction) {
   for (let c = 0; c < boardSize; c++) {
     let row = [board[0][c], board[1][c], board[2][c], board[3][c]];
 
-    if (direction === directions.down) {
+    if (direction === DIRECTIONS.down) {
       row.reverse();
     }
 
     row = merge(row);
 
-    if (direction === directions.down) {
+    if (direction === DIRECTIONS.down) {
       row.reverse();
     }
 

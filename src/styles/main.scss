@@ -76,6 +76,7 @@ body {
 }
 
 .game-field {
+  user-select: none;
   background: #bbada0;
   border-spacing: 10px;
   border-radius: 5px;
@@ -105,6 +106,7 @@ h1 {
 }
 
 .info {
+  user-select: none;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -124,6 +126,7 @@ h1 {
 }
 
 .button {
+  user-select: none;
   border: none;
   border-radius: 5px;
   cursor: pointer;
@@ -170,6 +173,7 @@ h1 {
 }
 
 .container {
+  user-select: none;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -182,6 +186,7 @@ h1 {
 }
 
 .message-container {
+  user-select: none;
   width: 100%;
   height: 150px;
 }
